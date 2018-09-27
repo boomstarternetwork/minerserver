@@ -27,7 +27,7 @@ func (ps dbProjectsStore) List() ([]Project, error) {
 	var projects []Project
 
 	rows, err := ps.db.Query(
-		"SELECT (id, name) FROM projects ORDER BY name ASC")
+		"SELECT id, name FROM projects ORDER BY name ASC")
 	if err != nil {
 		return projects, err
 	}

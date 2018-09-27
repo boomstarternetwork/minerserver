@@ -25,7 +25,7 @@ func Test_dbProjectsStore_List_success(t *testing.T) {
 		{ID: "id-2", Name: "name-2"},
 	}
 
-	mock.ExpectQuery(`^SELECT (.+) FROM projects`).
+	mock.ExpectQuery(`^SELECT .+ FROM projects`).
 		WillReturnRows(rows)
 
 	ps := NewDBProjectsStore(db)
