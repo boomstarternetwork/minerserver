@@ -35,6 +35,8 @@ func main() {
 
 	h := handler.NewHandler(ps)
 
+	e.HTTPErrorHandler = h.ErrorHandler
+
 	e.GET("/projects/list", h.ProjectsList)
 
 	e.Logger.Fatal(e.Start(":80"))
