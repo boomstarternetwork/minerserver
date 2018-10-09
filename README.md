@@ -1,12 +1,12 @@
 # minerserver
 
-REST API server dedicated to serve [minerclient](https://bitbucket.org/boomstarternetwork/minerclient/src).
+REST API server dedicated to serve [minerclient](https://github.com/boomstarternetwork/minerclient).
 
 For now it has only one method `/projects/list` which returns all projects
 list registered in `miningcore` postges database.
 
 This project intended to be run in docker container like it done in 
-[miningpool](https://bitbucket.org/boomstarternetwork/miningpool/src/master/).
+[miningpool](https://github.com/boomstarternetwork/miningpool).
 
 ## How to install
 

@@ -6,11 +6,9 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/stretchr/testify/assert"
-
+	"github.com/boomstarternetwork/minerserver/store"
 	"github.com/labstack/echo"
-
-	"bitbucket.org/boomstarternetwork/minerserver/store"
+	"github.com/stretchr/testify/assert"
 )
 
 func TestHandler_ProjectsList_dbError(t *testing.T) {

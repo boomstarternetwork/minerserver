@@ -5,8 +5,8 @@ import (
 	"log"
 	"os"
 
-	"bitbucket.org/boomstarternetwork/minerserver/handler"
-	"bitbucket.org/boomstarternetwork/minerserver/store"
+	"github.com/boomstarternetwork/minerserver/handler"
+	"github.com/boomstarternetwork/minerserver/store"
 	"github.com/labstack/echo"
 	_ "github.com/lib/pq"
 )
