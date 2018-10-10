@@ -8,6 +8,7 @@ import (
 	"github.com/boomstarternetwork/minerserver/handler"
 	"github.com/boomstarternetwork/minerserver/store"
 	"github.com/labstack/echo"
+	"github.com/labstack/echo/middleware"
 	_ "github.com/lib/pq"
 )
 
@@ -19,6 +20,9 @@ const connStrEnv = "MINERSERVER_POSTGRES_CONNECTION_STRING"
 
 func main() {
 	e := echo.New()
+
+	e.Use(middleware.Logger())
+	e.Use(middleware.Recover())
 
 	connStr, exists := os.LookupEnv(connStrEnv)
 	if !exists {
@@ -39,5 +43,5 @@ func main() {
 
 	e.GET("/projects/list", h.ProjectsList)
 
-	e.Logger.Fatal(e.Start(":80"))
+	e.Logger.Fatal(e.Start(":8080"))
 }
