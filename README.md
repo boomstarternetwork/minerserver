@@ -2,11 +2,8 @@
 
 REST API server dedicated to serve [minerclient](https://github.com/boomstarternetwork/minerclient).
 
-For now it has only one method `/projects/list` which returns all projects
+For now it has only one method `/projects` which returns all projects
 list registered in `miningcore` postges database.
-
-This project intended to be run in docker container like it done in 
-[miningpool](https://github.com/boomstarternetwork/miningpool).
 
 ## How to install
 
@@ -17,17 +14,8 @@ go install -v .
 
 ## How to run
 
-It has required environment variable `MINERSERVER_POSTGRES_CONNECTION_STRING`
-like:
-```
-postgres://pqgotest:password@localhost/pqgotest?sslmode=verify-full
-```
-or
-```
-user=pqgotest password=password dbname=pqgotest sslmode=verify-full
-```
+Read help:
 
-To run locally:
-```
-MINERSERVER_POSTGRES_CONNECTION_STRING=<your-string> minerserver
+```bash
+minerserver --help
 ```
