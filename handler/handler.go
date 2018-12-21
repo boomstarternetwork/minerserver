@@ -9,29 +9,13 @@ import (
 )
 
 type Handler struct {
-	projects store.ProjectsStore
+	store store.Store
 }
 
-func NewHandler(ps store.ProjectsStore) Handler {
+func NewHandler(s store.Store) Handler {
 	return Handler{
-		projects: ps,
+		store: s,
 	}
-}
-
-func (h Handler) ProjectsList(c echo.Context) error {
-	projects, err := h.projects.List()
-	if err != nil {
-		c.Logger().Error(err)
-		c.JSON(http.StatusInternalServerError,
-			echo.Map{"error": "internal server error"})
-		return nil
-	}
-
-	c.JSON(http.StatusOK, echo.Map{
-		"result": projects,
-	})
-
-	return nil
 }
 
 func (h Handler) ErrorHandler(err error, c echo.Context) {
