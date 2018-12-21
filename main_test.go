@@ -5,7 +5,7 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/boomstarternetwork/minerserver/store"
+	"github.com/boomstarternetwork/bestore"
 	"github.com/labstack/echo"
 	"github.com/stretchr/testify/assert"
 )
@@ -27,7 +27,7 @@ func TestHandler_ProjectsList_success(t *testing.T) {
 		return
 	}
 
-	s.On("ListProjects").Return([]store.Project{
+	s.On("GetProjects").Return([]bestore.Project{
 		{ID: "id-1", Name: "name-1"},
 		{ID: "id-2", Name: "name-2"},
 	}, nil)

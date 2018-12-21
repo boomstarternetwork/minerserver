@@ -8,7 +8,7 @@ import (
 )
 
 func (h Handler) Projects(c echo.Context) error {
-	projects, err := h.store.ListProjects()
+	projects, err := h.store.GetProjects()
 	if err != nil {
 		return errors.New("failed to list projects from store: " + err.Error())
 	}

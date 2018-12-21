@@ -5,7 +5,8 @@ import (
 	"os"
 	"testing"
 
-	"github.com/boomstarternetwork/minerserver/store"
+	"github.com/boomstarternetwork/bestore"
+
 	_ "github.com/lib/pq"
 )
 
@@ -26,11 +27,11 @@ func initTestingStore() {
 }
 
 func createTestingTables() {
-	s.gdb.AutoMigrate(&store.Project{})
+	s.gdb.AutoMigrate(&bestore.Project{})
 }
 
 func dropTestingTables() {
-	s.gdb.DropTableIfExists(&store.Project{})
+	s.gdb.DropTableIfExists(&bestore.Project{})
 }
 
 func TestMain(m *testing.M) {

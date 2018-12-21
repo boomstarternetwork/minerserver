@@ -1,10 +1,10 @@
 package dbstore
 
 import (
-	"github.com/boomstarternetwork/minerserver/store"
+	"github.com/boomstarternetwork/bestore"
 )
 
-func (s *DBStore) ListProjects() (ps []store.Project, err error) {
+func (s *DBStore) GetProjects() (ps []bestore.Project, err error) {
 	err = s.gdb.Order("name").Find(&ps).Error
 	return
 }

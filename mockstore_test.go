@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/boomstarternetwork/minerserver/store"
+	"github.com/boomstarternetwork/bestore"
 	"github.com/stretchr/testify/mock"
 )
 
@@ -13,11 +13,11 @@ func newMockStore() *mockStore {
 	return &mockStore{}
 }
 
-func (ps *mockStore) ListProjects() ([]store.Project, error) {
+func (ps *mockStore) GetProjects() ([]bestore.Project, error) {
 	args := ps.Called()
 	projects := args.Get(0)
 	if projects == nil {
 		return nil, args.Error(1)
 	}
-	return projects.([]store.Project), args.Error(1)
+	return projects.([]bestore.Project), args.Error(1)
 }

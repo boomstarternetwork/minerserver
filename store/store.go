@@ -1,10 +1,7 @@
 package store
 
-type Project struct {
-	ID   string `json:"id"`
-	Name string `json:"name"`
-}
+import "github.com/boomstarternetwork/bestore"
 
 type Store interface {
-	ListProjects() ([]Project, error)
+	GetProjects() ([]bestore.Project, error)
 }

@@ -3,7 +3,7 @@ package dbstore
 import (
 	"testing"
 
-	"github.com/boomstarternetwork/minerserver/store"
+	"github.com/boomstarternetwork/bestore"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -11,19 +11,19 @@ func Test_DBStore_ProjectsList_success(t *testing.T) {
 	createTestingTables()
 	defer dropTestingTables()
 
-	err := s.gdb.Model(&store.Project{}).
-		Create(&store.Project{ID: "id-2", Name: "name-2"}).
-		Create(&store.Project{ID: "id-1", Name: "name-1"}).Error
+	err := s.gdb.Model(&bestore.Project{}).
+		Create(&bestore.Project{ID: "id-2", Name: "name-2"}).
+		Create(&bestore.Project{ID: "id-1", Name: "name-1"}).Error
 	if !assert.NoError(t, err) {
 		return
 	}
 
-	wantProjects := []store.Project{
+	wantProjects := []bestore.Project{
 		{ID: "id-1", Name: "name-1"},
 		{ID: "id-2", Name: "name-2"},
 	}
 
-	projects, err := s.ListProjects()
+	projects, err := s.GetProjects()
 	if !assert.NoError(t, err) {
 		return
 	}
