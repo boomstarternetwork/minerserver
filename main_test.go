@@ -15,8 +15,8 @@ const (
 	logLevel = "off"
 )
 
-func initTestingEntities() (*echo.Echo, *mockStore, error) {
-	s := newMockStore()
+func initTestingEntities() (*echo.Echo, *bestore.MockStore, error) {
+	s := bestore.NewMockStore()
 	e, err := initWebServer(s, runMode, logLevel)
 	return e, s, err
 }
@@ -28,12 +28,12 @@ func TestHandler_ProjectsList_success(t *testing.T) {
 	}
 
 	s.On("GetProjects").Return([]bestore.Project{
-		{ID: "id-1", Name: "name-1"},
-		{ID: "id-2", Name: "name-2"},
+		{ID: 1, Name: "name-1"},
+		{ID: 2, Name: "name-2"},
 	}, nil)
 
-	const wantJSON = `{"projects":[{"id":"id-1","name":"name-1"},` +
-		`{"id":"id-2","name":"name-2"}]}`
+	const wantJSON = `{"projects":[{"id":1,"name":"name-1"},` +
+		`{"id":2,"name":"name-2"}]}`
 
 	req := httptest.NewRequest(http.MethodGet, "/projects", nil)
 	res := httptest.NewRecorder()

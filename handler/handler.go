@@ -4,15 +4,15 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/boomstarternetwork/minerserver/store"
+	"github.com/boomstarternetwork/bestore"
 	"github.com/labstack/echo"
 )
 
 type Handler struct {
-	store store.Store
+	store bestore.Store
 }
 
-func NewHandler(s store.Store) Handler {
+func NewHandler(s bestore.Store) Handler {
 	return Handler{
 		store: s,
 	}

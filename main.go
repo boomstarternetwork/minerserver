@@ -5,9 +5,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/boomstarternetwork/minerserver/dbstore"
+	"github.com/boomstarternetwork/bestore"
 	"github.com/boomstarternetwork/minerserver/handler"
-	"github.com/boomstarternetwork/minerserver/store"
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
 	"github.com/labstack/gommon/log"
@@ -76,7 +75,7 @@ func appAction(c *cli.Context) error {
 	runMode := c.String("run-mode")
 	logLevel := c.String("log-level")
 
-	s, err := dbstore.New(connStr, runMode)
+	s, err := bestore.NewDBStore(connStr, runMode)
 	if err != nil {
 		return cli.NewExitError("failed to create store: "+err.Error(), 1)
 	}
@@ -95,7 +94,7 @@ func appAction(c *cli.Context) error {
 	return nil
 }
 
-func initWebServer(s store.Store, runMode string,
+func initWebServer(s bestore.Store, runMode string,
 	logLevel string) (*echo.Echo, error) {
 	e := echo.New()
 
